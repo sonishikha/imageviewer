@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>HTML5 Image Upload</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <header>HTML5 Image Upload</header>
+        <div>
+            <form id="upload_form" enctype="multipart/form-data" method="post" action="upload_image.php">
+                <div>
+                    <div>
+                        <label>Width</label>
+                        <input type="text" name="width" id="width" value="1024">
+                        <label>Height</label>
+                        <input type="text" name="height" id="height" value="1024">
+                    </div>
+                    <div><label for="image_file">Please select image file of 1024 X 1024 dimention</label></div>
+                    <div><input type="file" name="image_file" id="image_file" required/></div>
+                </div>
+                <div>
+                    <input type="submit" value="Upload" id="upload_image"/>
+                </div>
+            </form>
+        </div>
+        <div id="error"></div>
+        <img id="preview">
+        <script src="jquery-3.1.1.min.js"></script>
+        <script src="main.js"></script>
+    </body>
+</html>
