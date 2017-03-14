@@ -1,37 +1,29 @@
 <?php
 
-//chmod($target_dir, 0777);
-$main_file = "./uploads/main/" . basename($_FILES["image_file"]["name"]);
-$horizontal_file = "./uploads/horizontal/" . basename($_FILES["image_file"]["name"]);
+include './cloudinary_php-master/src/Cloudinary.php';
+include './cloudinary_php-master/src/Uploader.php';
+if (file_exists('./cloudinary_php-master/settings.php')) {
+    include './cloudinary_php-master/settings.php';
+}
+$filename = $_FILES['image_file']['name'];
+echo "<pre>";
+foreach ($_POST['img_data'] as $key => $val) {
+    if (isset($val) && $val != '') {
+        $cloud_data = saveImageOnCloud($_FILES["image_file"]["tmp_name"],$key,$val,$filename);
+    }
+    print_r($cloud_data);
+}
 
-/* if (file_exists($target_file)) {
-  echo "Sorry, file already exists.";
-  $uploadOk = 0;
+function saveImageOnCloud($file,$folder,$coordinates,$filename){
+    $coords = json_decode($coordinates);
+    return \Cloudinary\Uploader::upload($file, array("public_id" => $folder . "/" . substr($filename, 0, strpos($filename, '.')), "width" => $coords->w, "height" => $coords->h, "x" => $coords->x, "y" => $coords->y, "crop" => "crop"));
+}
+
+/* function fileLocation($directory) {
+  return "./uploads/" . $directory . "/" . basename($_FILES["image_file"]["name"]);
   }
 
-  // Check if $uploadOk is set to 0 by an error
-  if ($uploadOk == 0) {
-  echo "Sorry, your file was not uploaded.";
-  // if everything is ok, try to upload file
-  } else { */
-if (move_uploaded_file($_FILES["image_file"]["tmp_name"], $main_file)) {
-    echo "The file " . basename($_FILES["image_file"]["name"]) . " has been uploaded.";
-} else {
-    echo "Sorry, there was an error uploading your file.";
-}
-
-$im = imagecreatefrompng($main_file);
-//$size = min(imagesx($im), imagesy($im));
-$im2 = imagecrop($im, ['x' => 0, 'y' => 0, 'width' => 755, 'height' => 450]);
-if ($im2 !== FALSE) {
-    $img = imagepng($im2, $horizontal_file);
-    if(move_uploaded_file($img, $horizontal_file)){
-        echo "shikha";
-    }else{
-        echo "bye";
-    }
-}else{
-    echo "hiii";
-}
-/* } */
+  function saveImgFromImgData($file, $img_data) {
+  file_put_contents($file, base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $img_data)));
+  } */
 ?>
