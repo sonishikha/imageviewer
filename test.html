@@ -4,7 +4,7 @@
         <title>HTML5 Image Upload</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="jquery.Jcrop.min.css" type="text/css" />
+        <link rel="stylesheet" href="css/jquery.Jcrop.min.css" type="text/css" />
     </head>
     <body>
         <header>HTML5 Image Upload</header>
@@ -13,47 +13,45 @@
                 <div>
                     <div>
                         <label>Width</label>
-                        <input type="text" name="width" id="width" value="1024">
+                        <input type="text" id="min_width" value="1024" size=4 readonly>
                         <label>Height</label>
-                        <input type="text" name="height" id="height" value="1024">
+                        <input type="text" id="min_height" value="1024" size=4 readonly>
                     </div>
-                    <div><label for="image_file">Please select image file of 1024 X 1024 dimention</label></div>
-                    <div><input type="file" name="image_file" id="image_file" required/></div>
-                    <div class="preview_class">
-                        <div>
-                            <button class="crop_image">Horizontal</button>
-                            <button class="crop_image">Vertical</button>
-                            <button class="crop_image">Small Horizontal</button>
-                            <button class="crop_image">Gallery</button>
-                            <button class="crop_image">User Choice</button>
-                            <button id="crop">Crop</button>
-                            <input type="submit" value="Upload" id="upload_image"/>
-                        </div>
-                        <div>
-                            <img id="preview"/>
-                            <input type="hidden" id="x" name="x" />
-                            <input type="hidden" id="y" name="y" />
-                            <input type="hidden" id="w" name="w" />
-                            <input type="hidden" id="h" name="h" />
-                            <input type="hidden" id="horizontal_img" name="img_data[horizontal]" />
-                            <input type="hidden" id="vertical_img" name="img_data[vertical]" />
-                            <input type="hidden" id="small_horizontal_img" name="img_data[small_horizontal]" />
-                            <input type="hidden" id="gallery_img" name="img_data[gallery]" />
-                            <input type="hidden" id="user_choice_img" name="img_data[user_choice]" />
-                        </div>
+                    <div><label for="image_upload">Please select image file of 1024 X 1024 dimention and less than 2 MB size.</label></div>
+                    <div>
+                        <input type="file" name="image_upload" id="image_upload" required/>
+                        <input type="submit" value="Upload" id="upload_image"/>
+                    </div>
+
+                    <div>
+                        <input type="hidden" id="coords"/>
+                        <input type="hidden" id="horizontal_img" name="img_data[horizontal]" />
+                        <input type="hidden" id="vertical_img" name="img_data[vertical]" />
+                        <input type="hidden" id="small_horizontal_img" name="img_data[small_horizontal]" />
+                        <input type="hidden" id="gallery_img" name="img_data[gallery]" />
+                        <input type="hidden" id="user_choice_img" name="img_data[user_choice]" />
                     </div>
                 </div>
             </form>
         </div>
-        <div><canvas id="horizontal"></canvas></div>
-        <div><canvas id="vertical"></canvas></div>
-        <div><canvas id="small_horizontal"></canvas></div>
-        <div><canvas id="gallery"></canvas></div>
-        <div><canvas id="user_choice"></canvas></div>
-        <div id="error"></div>
+        <div id="preview_class">
+            <button class="crop_image">Horizontal</button>
+            <button class="crop_image">Vertical</button>
+            <button class="crop_image">Small Horizontal</button>
+            <button class="crop_image">Gallery</button>
+            <button class="crop_image">User Choice</button>
+            <button id="crop">Crop</button>
+            <img id="preview"/>    
+        </div>
+        <div id="crop_preview"></div>
+        <div style="display:none"><canvas id="horizontal"></canvas></div>
+        <div style="display:none"><canvas id="vertical"></canvas></div>
+        <div style="display:none"><canvas id="small_horizontal"></canvas></div>
+        <div style="display:none"><canvas id="gallery"></canvas></div>
+        <div style="display:none"><canvas id="user_choice"></canvas></div>
 
-        <script src="jquery-3.1.1.min.js"></script>
-        <script src="jquery.Jcrop.min.js"></script>
-        <script src="main.js"></script>
+        <script src="js/jquery-3.1.1.min.js"></script>
+        <script src="js/jquery.Jcrop.min.js"></script>
+        <script src="js/main.js"></script>
     </body>
 </html>
