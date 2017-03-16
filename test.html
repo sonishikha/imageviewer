@@ -2,8 +2,6 @@
 <html>
     <head>
         <title>HTML5 Image Upload</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="css/jquery.Jcrop.min.css" type="text/css" />
     </head>
     <body>
@@ -11,13 +9,7 @@
         <div>
             <form id="upload_form" enctype="multipart/form-data" method="post" action="upload_image.php">
                 <div>
-                    <div>
-                        <label>Width</label>
-                        <input type="text" id="min_width" value="1024" size=4 readonly>
-                        <label>Height</label>
-                        <input type="text" id="min_height" value="1024" size=4 readonly>
-                    </div>
-                    <div><label for="image_upload">Please select image file of 1024 X 1024 dimention and less than 2 MB size.</label></div>
+                    <div><label for="image_upload">Please select image file of 1024 X 1024 dimension and less than 2 MB size.</label></div>
                     <div>
                         <input type="file" name="image_upload" id="image_upload" required/>
                         <input type="submit" value="Upload" id="upload_image"/>
@@ -25,6 +17,12 @@
 
                     <div>
                         <input type="hidden" id="coords"/>
+                        <input type="hidden" id="horizontal_coords" name="img_coords[horizontal]" />
+                        <input type="hidden" id="vertical_coords" name="img_coords[vertical]" />
+                        <input type="hidden" id="small_horizontal_coords" name="img_coords[small_horizontal]" />
+                        <input type="hidden" id="gallery_coords" name="img_coords[gallery]" />
+                        <input type="hidden" id="user_choice_coords" name="img_coords[user_choice]" />
+                        
                         <input type="hidden" id="horizontal_img" name="img_data[horizontal]" />
                         <input type="hidden" id="vertical_img" name="img_data[vertical]" />
                         <input type="hidden" id="small_horizontal_img" name="img_data[small_horizontal]" />
