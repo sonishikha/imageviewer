@@ -20,7 +20,7 @@ function drawImg(uploadedFile, crop_type) {
             $('#' + crop_type + '_img').val(canvas.toDataURL(uploadedFile.type));
             $('#' + crop_type + '_coords').val(JSON.stringify(coords));
             $('#' + crop_type).parent().show();
-            $('#upload_image').show();
+            $('#upload_btn').show();
         }
         img.src = e.target.result;
     }
@@ -38,15 +38,15 @@ function cropImg(dimensions, allowResize, allowSelect) {
     });
 }
 /* Saves the final co-ordinates selected on preview image in a hidden variable which is later used in drawImg function */
-function updateCoords(c) {
-    $('#coords').data('coords', {x: c.x, y: c.y, w: c.w, h: c.h});
+function updateCoords(coords) {
+    $('#coords').data('coords', {x: coords.x, y: coords.y, w: coords.w, h: coords.h});
 }
 
 $(document).ready(function () {
     var file, crop_type;
     var min_width = 1024;
     var min_height = 1024;
-    $('#preview_class, #upload_image').hide();
+    $('#preview_class, #upload_btn').hide();
     /* Validate if image is of 1024x1024 dimension and less than or equal to 2Mb. Preview selected image */
     $('#image_upload').on('change', function () {
         $('#preview').attr('src', '').hide();
