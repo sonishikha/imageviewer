@@ -1,20 +1,19 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>HTML5 Image Upload</title>
+        <title>Image Crop</title>
         <link rel="stylesheet" href="css/jquery.Jcrop.min.css" type="text/css" />
     </head>
     <body>
-        <header>HTML5 Image Upload</header>
         <div>
             <form id="upload_form" enctype="multipart/form-data" method="post" action="upload_image.php">
                 <div>
-                    <div><label for="image_upload">Please select image file of 1024 X 1024 dimension and less than 2 MB size.</label></div>
+                    
                     <div>
                         <input type="file" name="image_upload" id="image_upload" required/>
                         <input type="submit" value="Upload" id="upload_btn"/>
                     </div>
-
+                    <div><span>Please select image file of 1024 X 1024 dimension and less than 2 MB size.</span></div>
                     <div>
                         <input type="hidden" id="coords"/>
                         <input type="hidden" id="horizontal_coords" name="img_coords[horizontal]" />
@@ -42,11 +41,11 @@
             <img id="preview"/>    
         </div>
         <div id="crop_preview"></div>
-        <div style="display:none"><canvas id="horizontal"></canvas></div>
-        <div style="display:none"><canvas id="vertical"></canvas></div>
-        <div style="display:none"><canvas id="small_horizontal"></canvas></div>
-        <div style="display:none"><canvas id="gallery"></canvas></div>
-        <div style="display:none"><canvas id="user_choice"></canvas></div>
+        <div style="display:none"><div><span>Horizontal</span></div><canvas id="horizontal"></canvas></div>
+        <div style="display:none"><div><span>Vertical</span></div><canvas id="vertical"></canvas></div>
+        <div style="display:none"><div><span>Small Horizontal</span></div><canvas id="small_horizontal"></canvas></div>
+        <div style="display:none"><div><span>Gallery</span></div><canvas id="gallery"></canvas></div>
+        <div style="display:none"><div><span>User Choice</span></div><canvas id="user_choice"></canvas></div>
 
         <script src="js/jquery-3.1.1.min.js"></script>
         <script src="js/jquery.Jcrop.min.js"></script>
