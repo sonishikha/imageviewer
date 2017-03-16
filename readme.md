@@ -1,2 +1,1 @@
-this is a test file
-
+XAMPP or LAMP will be required.
